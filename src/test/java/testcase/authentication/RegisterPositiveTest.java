@@ -38,6 +38,9 @@ public class RegisterPositiveTest {
 
         //Assertion : cek Title apakah sudah sesuai dengan Title Home Page
         registerPage.inputFormIsDisplayed();
+
+        //Element action
+        registerPage.inputMasaAktifField("1010101010101011", "9", "2030");
     }
 
     @AfterClass
