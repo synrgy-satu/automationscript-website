@@ -41,6 +41,24 @@ public class RegisterPositiveTest {
 
         //Element action
         registerPage.inputMasaAktifField("1010101010101011", "9", "2030");
+
+        //Assertion : cek apakah instruction text telah benar
+        Assert.assertEquals(registerPage.getInstructionEmailText(),"Masukkan alamat email dan nomor telepon untuk membuat akun Digibank SATU");
+
+        //Element action
+        registerPage.inputEmailNomorTeleponField("admin@email.com", "0851568113509");
+
+        //Assertion : cek apakah instruction text telah benar
+        Assert.assertEquals(registerPage.getInstructionKataSandiText(),"Atur sandi akun untuk masuk ke dalam Digibank SATU");
+
+        //Element action
+        registerPage.inputKataSandiField("Testing123*", "Testing123*");
+
+        //Assertion : cek apakah instruction text telah benar
+        Assert.assertEquals(registerPage.getInstructionPinText(),"Atur PIN M-Banking untuk bertransaksi di dalam Digibank SATU");
+
+        //Element action
+        registerPage.inputPinField("123456", "123456");
     }
 
     @AfterClass
