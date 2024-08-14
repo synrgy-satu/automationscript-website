@@ -5,27 +5,27 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.LandingPage;
 import pages.LoginPage;
 import pages.PortalPage;
-import pages.RegisterPage;
 
-public class LoginPositiveTest {
+public class TransferPositiveTest {
     WebDriver driver;
 
     @BeforeClass
-    public void setUp(){
+    public void setUp() throws InterruptedException {
         driver = WebDriverManager.chromedriver().create();
         driver.manage().window().maximize();
         driver.get("https://banksatu.fly.dev/");
     }
 
     @Test
-    public void loginTest() throws InterruptedException{
+    public void transferTest() throws InterruptedException {
+        PortalPage portalPage = new PortalPage(driver);
         LandingPage landingPage = new LandingPage(driver);
         LoginPage loginPage = new LoginPage(driver);
-        PortalPage portalPage = new PortalPage(driver);
 
         //Assertion : cek Current URL apakah sudah sesuai dengan URL Landing Page
         Assert.assertEquals(landingPage.getCurrentURL(),"https://banksatu.fly.dev/");
@@ -48,12 +48,18 @@ public class LoginPositiveTest {
         loginPage.clickMasukButton();
         Thread.sleep(7000); // Pengecualian dapat terjadi di sini
 
-        //Assertion : cek current URL apakah sudah berpindah halaman
+        //Assertion : cek Current URL apakah sudah sesuai dengan URL Portal Page
         Assert.assertEquals(portalPage.getCurrentURL(),"https://banksatu.fly.dev/portal");
+
+        //Element action
+        portalPage.clickTransferSideBar();
+        portalPage.clickTransferKategoriButton();
+        portalPage.clickTransferKeRekeningSatuButton();
     }
 
     @AfterClass
     public void tearDown(){
         driver.quit();
     }
+
 }
