@@ -1,11 +1,10 @@
-package testcase.authentication;
+package testcase.transfer;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.LandingPage;
 import pages.LoginPage;
@@ -55,6 +54,7 @@ public class TransferPositiveTest {
         portalPage.clickTransferSideBar();
         portalPage.clickTransferKategoriButton();
         portalPage.clickTransferKeRekeningSatuButton();
+        portalPage.inputInformationTransfer("1111111111", "100000", "automation testing");
     }
 
     @AfterClass

@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 import pages.LandingPage;
 import pages.LoginPage;
 import pages.PortalPage;
-import pages.RegisterPage;
 
 public class LoginPositiveTest {
     WebDriver driver;

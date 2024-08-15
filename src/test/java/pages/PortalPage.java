@@ -14,6 +14,14 @@ public class PortalPage {
     By transferButton = By.xpath("(//*[@class='block py-3 px-6 text-base font-normal rounded-lg  hover:font-bold hover:bg-[#272D87] focus:font-bold focus:bg-[#272D87]'])[1]");
     By transferKategoriButton = By.id("transfer-one-heading");
     By transferKeRekeningSatuButton = By.id("transfer-satu-heading");
+    By selectSumberRekening = By.id("sumber-rekening");
+    By optionSumberRekening = By.xpath("//*[@value='1111111165']");
+    By rekeningTujuanField = By.id("tujuan-rekening");
+    By nominalTransferField = By.id("nominal-tf");
+    By catatanField = By.id("catatan");
+    By selectWaktuTransfer = By.id("jenis-transaksi");
+    By optionSekarang = By.xpath("//*[@value='sekarang']");
+    By verifikasiDetailTransferButton = By.xpath("//*[@type='submit']");
 
     public PortalPage(WebDriver driver) {
         this.driver = driver;
@@ -37,4 +45,16 @@ public class PortalPage {
     public void clickTransferKeRekeningSatuButton(){
         driver.findElement(transferKeRekeningSatuButton).click();
     }
+
+    public void inputInformationTransfer(String rekeningtujuan, String nominaltransfer, String catatan){
+        driver.findElement(selectSumberRekening).click();
+        driver.findElement(optionSumberRekening).click();
+        driver.findElement(rekeningTujuanField).sendKeys(rekeningtujuan);
+        driver.findElement(nominalTransferField).sendKeys(nominaltransfer);
+        driver.findElement(catatanField).sendKeys(catatan);
+        driver.findElement(selectWaktuTransfer).click();
+        driver.findElement(optionSekarang).click();
+        driver.findElement(verifikasiDetailTransferButton).click();
+    }
+
 }
