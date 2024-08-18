@@ -1,4 +1,4 @@
-package testcase.authentication;
+package testcase.tabunganpage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -8,23 +8,23 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.LandingPage;
 import pages.LoginPage;
-import pages.TransferPage;
+import pages.TabunganPage;
 
-public class LoginPositiveTest {
+public class InfoSaldoPositiveTest {
     WebDriver driver;
 
     @BeforeClass
-    public void setUp(){
+    public void setUp() throws InterruptedException {
         driver = WebDriverManager.chromedriver().create();
         driver.manage().window().maximize();
         driver.get("https://banksatu.fly.dev/");
     }
 
     @Test
-    public void loginTest() throws InterruptedException{
+    public void tabunganTest() throws InterruptedException {
+        TabunganPage tabunganPage =  new TabunganPage(driver);
         LandingPage landingPage = new LandingPage(driver);
         LoginPage loginPage = new LoginPage(driver);
-        TransferPage transferPage = new TransferPage(driver);
 
         //Assertion : cek Current URL apakah sudah sesuai dengan URL Landing Page
         Assert.assertEquals(landingPage.getCurrentURL(),"https://banksatu.fly.dev/");
@@ -47,8 +47,15 @@ public class LoginPositiveTest {
         loginPage.clickMasukButton();
         Thread.sleep(7000); // Pengecualian dapat terjadi di sini
 
-        //Assertion : cek current URL apakah sudah berpindah halaman
-        Assert.assertEquals(transferPage.getCurrentURL(),"https://banksatu.fly.dev/portal");
+        //Assertion : cek Current URL apakah sudah sesuai dengan URL Portal Page
+        Assert.assertEquals(tabunganPage.getCurrentURL(),"https://banksatu.fly.dev/portal");
+
+        //Element action
+        tabunganPage.clickTabunganSideBar();
+
+        //Assertion : cek apakah saldo akhir dan informasi tabungan terlihat
+        tabunganPage.saldoAkhirIsDisplayed();
+        tabunganPage.informasiTabunganIsDisplayed();
     }
 
     @AfterClass

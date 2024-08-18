@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.LandingPage;
 import pages.LoginPage;
-import pages.PortalPage;
+import pages.TransferPage;
 
 public class TransferPositiveTest {
     WebDriver driver;
@@ -22,7 +22,7 @@ public class TransferPositiveTest {
 
     @Test
     public void transferTest() throws InterruptedException {
-        PortalPage portalPage = new PortalPage(driver);
+        TransferPage transferPage = new TransferPage(driver);
         LandingPage landingPage = new LandingPage(driver);
         LoginPage loginPage = new LoginPage(driver);
 
@@ -42,19 +42,19 @@ public class TransferPositiveTest {
         loginPage.inputFormIsDisplayed();
 
         //Element action
-        loginPage.inputEmailField("zhanuardy@upi.edu");
-        loginPage.inputKataSandiField("Zhanuardy3222*");
+        loginPage.inputEmailField("gilangzhanuardy3222@gmail.com");
+        loginPage.inputKataSandiField("Testing123*");
         loginPage.clickMasukButton();
         Thread.sleep(7000); // Pengecualian dapat terjadi di sini
 
         //Assertion : cek Current URL apakah sudah sesuai dengan URL Portal Page
-        Assert.assertEquals(portalPage.getCurrentURL(),"https://banksatu.fly.dev/portal");
+        Assert.assertEquals(transferPage.getCurrentURL(),"https://banksatu.fly.dev/portal");
 
         //Element action
-        portalPage.clickTransferSideBar();
-        portalPage.clickTransferKategoriButton();
-        portalPage.clickTransferKeRekeningSatuButton();
-        portalPage.inputInformationTransfer("1111111111", "100000", "automation testing");
+        transferPage.clickTransferSideBar();
+        transferPage.clickTransferKategoriButton();
+        transferPage.clickTransferKeRekeningSatuButton();
+        transferPage.inputInformationTransfer("1111111189", "10000", "automation testing", "123456");
     }
 
     @AfterClass
