@@ -1,16 +1,16 @@
-package testcase.tabunganpage;
+package testcase.transfer;
 
+import Selenium.pages.LandingPage;
+import Selenium.pages.LoginPage;
+import Selenium.pages.TransferPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.LandingPage;
-import pages.LoginPage;
-import pages.TabunganPage;
 
-public class InfoSaldoPositiveTest {
+public class TransferPositiveTest {
     WebDriver driver;
 
     @BeforeClass
@@ -21,8 +21,8 @@ public class InfoSaldoPositiveTest {
     }
 
     @Test
-    public void tabunganTest() throws InterruptedException {
-        TabunganPage tabunganPage =  new TabunganPage(driver);
+    public void transferTest() throws InterruptedException {
+        TransferPage transferPage = new TransferPage(driver);
         LandingPage landingPage = new LandingPage(driver);
         LoginPage loginPage = new LoginPage(driver);
 
@@ -48,18 +48,18 @@ public class InfoSaldoPositiveTest {
         Thread.sleep(7000); // Pengecualian dapat terjadi di sini
 
         //Assertion : cek Current URL apakah sudah sesuai dengan URL Portal Page
-        Assert.assertEquals(tabunganPage.getCurrentURL(),"https://banksatu.fly.dev/portal");
+        Assert.assertEquals(transferPage.getCurrentURL(),"https://banksatu.fly.dev/portal");
 
         //Element action
-        tabunganPage.clickTabunganSideBar();
-
-        //Assertion : cek apakah saldo akhir dan informasi tabungan terlihat
-        tabunganPage.saldoAkhirIsDisplayed();
-        tabunganPage.informasiTabunganIsDisplayed();
+        transferPage.clickTransferSideBar();
+        transferPage.clickTransferKategoriButton();
+        transferPage.clickTransferKeRekeningSatuButton();
+        transferPage.inputInformationTransfer("1111111189", "10000", "automation testing", "123456");
     }
 
     @AfterClass
     public void tearDown(){
         driver.quit();
     }
+
 }

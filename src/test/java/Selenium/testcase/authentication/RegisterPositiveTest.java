@@ -1,13 +1,13 @@
 package testcase.authentication;
 
+import Selenium.pages.LandingPage;
+import Selenium.pages.RegisterPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.LandingPage;
-import pages.RegisterPage;
 
 public class RegisterPositiveTest {
     WebDriver driver;

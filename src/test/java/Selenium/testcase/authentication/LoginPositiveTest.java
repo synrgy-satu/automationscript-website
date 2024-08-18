@@ -1,30 +1,30 @@
-package testcase.transfer;
+package testcase.authentication;
 
+import Selenium.pages.LandingPage;
+import Selenium.pages.LoginPage;
+import Selenium.pages.TransferPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.LandingPage;
-import pages.LoginPage;
-import pages.TransferPage;
 
-public class TransferPositiveTest {
+public class LoginPositiveTest {
     WebDriver driver;
 
     @BeforeClass
-    public void setUp() throws InterruptedException {
+    public void setUp(){
         driver = WebDriverManager.chromedriver().create();
         driver.manage().window().maximize();
         driver.get("https://banksatu.fly.dev/");
     }
 
     @Test
-    public void transferTest() throws InterruptedException {
-        TransferPage transferPage = new TransferPage(driver);
+    public void loginTest() throws InterruptedException{
         LandingPage landingPage = new LandingPage(driver);
         LoginPage loginPage = new LoginPage(driver);
+        TransferPage transferPage = new TransferPage(driver);
 
         //Assertion : cek Current URL apakah sudah sesuai dengan URL Landing Page
         Assert.assertEquals(landingPage.getCurrentURL(),"https://banksatu.fly.dev/");
@@ -47,19 +47,12 @@ public class TransferPositiveTest {
         loginPage.clickMasukButton();
         Thread.sleep(7000); // Pengecualian dapat terjadi di sini
 
-        //Assertion : cek Current URL apakah sudah sesuai dengan URL Portal Page
+        //Assertion : cek current URL apakah sudah berpindah halaman
         Assert.assertEquals(transferPage.getCurrentURL(),"https://banksatu.fly.dev/portal");
-
-        //Element action
-        transferPage.clickTransferSideBar();
-        transferPage.clickTransferKategoriButton();
-        transferPage.clickTransferKeRekeningSatuButton();
-        transferPage.inputInformationTransfer("1111111189", "10000", "automation testing", "123456");
     }
 
     @AfterClass
     public void tearDown(){
         driver.quit();
     }
-
 }
