@@ -1,4 +1,4 @@
-package testcase.authentication;
+package Selenium.testcase.authentication;
 
 import Selenium.pages.LandingPage;
 import Selenium.pages.LoginPage;

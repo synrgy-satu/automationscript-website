@@ -1,4 +1,4 @@
-package testcase.transfer;
+package Selenium.testcase.transfer;
 
 import Selenium.pages.LandingPage;
 import Selenium.pages.LoginPage;
