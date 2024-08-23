@@ -54,7 +54,7 @@ public class TransferPositiveTest {
         transferPage.clickTransferSideBar();
         transferPage.clickTransferKategoriButton();
         transferPage.clickTransferKeRekeningSatuButton();
-        transferPage.inputInformationTransfer("1111111189", "10000", "automation testing", "123456");
+        transferPage.inputInformationTransfer("1111111155", "10000", "automation testing", "123456");
     }
 
     @AfterClass

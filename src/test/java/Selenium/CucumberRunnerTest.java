@@ -14,5 +14,4 @@ import io.cucumber.testng.CucumberOptions;
         },
         monochrome = true // Menampilkan output tanpa karakter warna yang bisa mempersulit pembacaan log
 )
-public class CucumberRunnerTest extends AbstractTestNGCucumberTests {
-}
+public class CucumberRunnerTest extends AbstractTestNGCucumberTests {}

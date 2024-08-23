@@ -10,12 +10,12 @@ public class TransferPage {
     WebDriver driver;
     WebDriverWait wait;
 
-    By transaksiSideBar = By.xpath("//*[@class='flex items-center justify-between w-full py-3 px-6 text-base font-normal rounded-lg  hover:font-bold hover:bg-[#272D87] focus:font-bold']");
+    By transaksiSideBar = By.xpath("(//*[@class='flex items-center'])[1]");
     By transferButton = By.xpath("(//*[@class='block py-3 px-6 text-base font-normal rounded-lg  hover:font-bold hover:bg-[#272D87] focus:font-bold focus:bg-[#272D87]'])[1]");
     By transferKategoriButton = By.id("transfer-one-heading");
     By transferKeRekeningSatuButton = By.id("transfer-satu-heading");
     By selectSumberRekening = By.id("sumber-rekening");
-    By optionSumberRekening = By.xpath("//*[@value='1111111104']");
+    By optionSumberRekening = By.xpath("//*[@value='1111111165']");
     By rekeningTujuanField = By.id("tujuan-rekening");
     By nominalTransferField = By.id("nominal-tf");
     By catatanField = By.id("catatan");

@@ -21,8 +21,8 @@ public class LoginStepDef {
         driver.get("https://banksatu.fly.dev/login");
     }
 
-    @And("user input username with {string}")
-    public void userInputUsernameWith(String email) throws InterruptedException {
+    @And("user input email with {string}")
+    public void userInputEmailWith(String email) throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         Thread.sleep(2000);
         loginPage.inputEmailField(email);
@@ -46,10 +46,4 @@ public class LoginStepDef {
         TransferPage transferPage = new TransferPage(driver);
         Assert.assertEquals(transferPage.getCurrentURL(),"https://banksatu.fly.dev/portal");
     }
-
-//    @Then("error message is showing up")
-//    public void error_message_is_showing_up() {
-//        LoginPage loginPage = new LoginPage(driver);
-//        loginPage.errorMessageIsDisplayed();
-//    }
 }
