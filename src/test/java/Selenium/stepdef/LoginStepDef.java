@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class LoginStepDef {
-    protected static WebDriver driver;
+    public static WebDriver driver;
 
     @Given("user is on login page")
     public void userIsOnLoginPage(){
@@ -45,5 +45,6 @@ public class LoginStepDef {
     public void userIsOnHomePage(){
         TransferPage transferPage = new TransferPage(driver);
         Assert.assertEquals(transferPage.getCurrentURL(),"https://banksatu.fly.dev/portal");
+        LoginStepDef.driver.quit();
     }
 }

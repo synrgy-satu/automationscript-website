@@ -1,8 +1,9 @@
-package Selenium.testcase.authentication;
+package Selenium.testcase.qris;
 
 import Selenium.pages.LandingPage;
 import Selenium.pages.LoginPage;
-import Selenium.pages.TransferPage;
+import Selenium.pages.MutationPage;
+import Selenium.pages.QRISPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -10,21 +11,21 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class LoginPositiveTest {
-    static WebDriver driver;
+public class QRISPositiveTest {
+    WebDriver driver;
 
     @BeforeClass
-    public void setUp(){
+    public void setUp() throws InterruptedException {
         driver = WebDriverManager.chromedriver().create();
         driver.manage().window().maximize();
         driver.get("https://banksatu.fly.dev/");
     }
 
     @Test
-    public void loginTest() throws InterruptedException{
+    public void qrisTest() throws InterruptedException {
+        QRISPage qrisPage = new QRISPage(driver);
         LandingPage landingPage = new LandingPage(driver);
         LoginPage loginPage = new LoginPage(driver);
-        TransferPage transferPage = new TransferPage(driver);
 
         //Assertion : cek Current URL apakah sudah sesuai dengan URL Landing Page
         Assert.assertEquals(landingPage.getCurrentURL(),"https://banksatu.fly.dev/");
@@ -47,12 +48,17 @@ public class LoginPositiveTest {
         loginPage.clickMasukButton();
         Thread.sleep(7000); // Pengecualian dapat terjadi di sini
 
-        //Assertion : cek current URL apakah sudah berpindah halaman
-        Assert.assertEquals(transferPage.getCurrentURL(),"https://banksatu.fly.dev/portal");
+        //Assertion : cek Current URL apakah sudah sesuai dengan URL Portal Page
+        Assert.assertEquals(qrisPage.getCurrentURL(),"https://banksatu.fly.dev/portal");
+
+        //Element action
+        qrisPage.clickQrisSideBar();
+        qrisPage.inputInformationQris();
+        qrisPage.qrisIsDisplayed();
     }
 
     @AfterClass
-    public static void tearDown(){
+    public void tearDown(){
         driver.quit();
     }
 }

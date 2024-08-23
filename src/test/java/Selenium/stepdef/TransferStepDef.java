@@ -9,9 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class TransferStepDef {
-    protected static WebDriver driver;
 
-    @And("user click on transfer sidebar button")
+    @And("user click on transaksi transfer sidebar button")
     public void userClickTransaksiSidebarButton() {
         TransferPage transferPage =  new TransferPage(LoginStepDef.driver);
         transferPage.clickTransferSideBar();
@@ -33,5 +32,6 @@ public class TransferStepDef {
     public void userInputInformationTransfer() throws InterruptedException {
         TransferPage transferPage =  new TransferPage(LoginStepDef.driver);
         transferPage.inputInformationTransfer("1111111155", "10000", "automation testing", "123456");
+        LoginStepDef.driver.quit();
     }
 }

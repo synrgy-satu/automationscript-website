@@ -2,6 +2,8 @@ package Selenium;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 
 @CucumberOptions(
         features = {"src/test/resources/features"}, // Path ke folder features Anda
@@ -14,4 +16,5 @@ import io.cucumber.testng.CucumberOptions;
         },
         monochrome = true // Menampilkan output tanpa karakter warna yang bisa mempersulit pembacaan log
 )
-public class CucumberRunnerTest extends AbstractTestNGCucumberTests {}
+public class CucumberRunnerTest extends AbstractTestNGCucumberTests {
+}

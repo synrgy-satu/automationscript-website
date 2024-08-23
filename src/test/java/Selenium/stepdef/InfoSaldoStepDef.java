@@ -17,5 +17,6 @@ public class InfoSaldoStepDef {
     public void userIsOnTabunganPage(){
         TabunganPage tabunganPage =  new TabunganPage(LoginStepDef.driver);
         Assert.assertEquals(tabunganPage.getCurrentURL(),"https://banksatu.fly.dev/portal/savings");
+        LoginStepDef.driver.quit();
     }
 }

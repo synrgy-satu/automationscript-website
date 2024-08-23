@@ -1,8 +1,8 @@
-package Selenium.testcase.authentication;
+package Selenium.testcase.mutation;
 
 import Selenium.pages.LandingPage;
 import Selenium.pages.LoginPage;
-import Selenium.pages.TransferPage;
+import Selenium.pages.MutationPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -10,21 +10,21 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class LoginPositiveTest {
-    static WebDriver driver;
+public class MutationPositiveTest {
+    WebDriver driver;
 
     @BeforeClass
-    public void setUp(){
+    public void setUp() throws InterruptedException {
         driver = WebDriverManager.chromedriver().create();
         driver.manage().window().maximize();
         driver.get("https://banksatu.fly.dev/");
     }
 
     @Test
-    public void loginTest() throws InterruptedException{
+    public void mutationTest() throws InterruptedException {
+        MutationPage mutationPage = new MutationPage(driver);
         LandingPage landingPage = new LandingPage(driver);
         LoginPage loginPage = new LoginPage(driver);
-        TransferPage transferPage = new TransferPage(driver);
 
         //Assertion : cek Current URL apakah sudah sesuai dengan URL Landing Page
         Assert.assertEquals(landingPage.getCurrentURL(),"https://banksatu.fly.dev/");
@@ -47,12 +47,17 @@ public class LoginPositiveTest {
         loginPage.clickMasukButton();
         Thread.sleep(7000); // Pengecualian dapat terjadi di sini
 
-        //Assertion : cek current URL apakah sudah berpindah halaman
-        Assert.assertEquals(transferPage.getCurrentURL(),"https://banksatu.fly.dev/portal");
+        //Assertion : cek Current URL apakah sudah sesuai dengan URL Portal Page
+        Assert.assertEquals(mutationPage.getCurrentURL(),"https://banksatu.fly.dev/portal");
+
+        //Element action
+        mutationPage.clickMutationSideBar();
+        mutationPage.inputInformationMutation();
+        mutationPage.mutationRekeningIsDisplayed();
     }
 
     @AfterClass
-    public static void tearDown(){
+    public void tearDown(){
         driver.quit();
     }
 }

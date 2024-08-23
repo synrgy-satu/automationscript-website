@@ -5,7 +5,7 @@ Feature: Transfer
     And user input email with "gilangzhanuardy3222@gmail.com"
     And user input password with "Testing123*"
     And user click on login button
-    And user click on transfer sidebar button
+    And user click on transaksi transfer sidebar button
     And user click on transfer button
     When user click on transfer to satu button
     Then user input information transfer
