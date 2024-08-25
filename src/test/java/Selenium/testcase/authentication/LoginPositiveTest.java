@@ -21,7 +21,7 @@ public class LoginPositiveTest {
     }
 
     @Test
-    public void loginTest() throws InterruptedException{
+    public void loginTest(){
         LandingPage landingPage = new LandingPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         TransferPage transferPage = new TransferPage(driver);
@@ -45,7 +45,6 @@ public class LoginPositiveTest {
         loginPage.inputEmailField("gilangzhanuardy3222@gmail.com");
         loginPage.inputKataSandiField("Testing123*");
         loginPage.clickMasukButton();
-        Thread.sleep(7000); // Pengecualian dapat terjadi di sini
 
         //Assertion : cek current URL apakah sudah berpindah halaman
         Assert.assertEquals(transferPage.getCurrentURL(),"https://banksatu.fly.dev/portal");

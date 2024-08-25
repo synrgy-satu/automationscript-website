@@ -24,37 +24,37 @@ public class RegisterPositiveTest {
         LandingPage landingPage = new LandingPage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
 
-        //Assertion : cek Current URL apakah sudah sesuai dengan URL Landing Page
+        //Assertion
         Assert.assertEquals(landingPage.getCurrentURL(),"https://banksatu.fly.dev/");
 
-        //Assertion : cek apakah Field username, password, dan Button login telah muncul
+        //Assertion
         landingPage.buttonIsDisplayed();
 
         //Element action
         landingPage.clickMendaftarButton();
 
-        //Assertion : cek current URL apakah sudah berpindah halaman sehingga sesuai dengan URL Home Page
+        //Assertion
         Assert.assertEquals(registerPage.getCurrentURL(),"https://banksatu.fly.dev/register");
 
-        //Assertion : cek Title apakah sudah sesuai dengan Title Home Page
+        //Assertion
         registerPage.inputFormIsDisplayed();
 
         //Element action
-        registerPage.inputMasaAktifField("1010101010101011", "9", "2030");
+        registerPage.inputMasaAktifField("1010101010101020", "9", "2030");
 
-        //Assertion : cek apakah instruction text telah benar
+        //Assertion
         Assert.assertEquals(registerPage.getInstructionEmailText(),"Masukkan alamat email dan nomor telepon untuk membuat akun Digibank SATU");
 
         //Element action
-        registerPage.inputEmailNomorTeleponField("admin@email.com", "0851568113509");
+        registerPage.inputEmailNomorTeleponField("admin333@gmail.com", "0851568113577");
 
-        //Assertion : cek apakah instruction text telah benar
+        //Assertion
         Assert.assertEquals(registerPage.getInstructionKataSandiText(),"Atur sandi akun untuk masuk ke dalam Digibank SATU");
 
         //Element action
         registerPage.inputKataSandiField("Testing123*", "Testing123*");
 
-        //Assertion : cek apakah instruction text telah benar
+        //Assertion
         Assert.assertEquals(registerPage.getInstructionPinText(),"Atur PIN M-Banking untuk bertransaksi di dalam Digibank SATU");
 
         //Element action

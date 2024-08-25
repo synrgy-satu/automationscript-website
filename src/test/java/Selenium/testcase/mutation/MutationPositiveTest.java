@@ -14,7 +14,7 @@ public class MutationPositiveTest {
     WebDriver driver;
 
     @BeforeClass
-    public void setUp() throws InterruptedException {
+    public void setUp() {
         driver = WebDriverManager.chromedriver().create();
         driver.manage().window().maximize();
         driver.get("https://banksatu.fly.dev/");
@@ -26,28 +26,27 @@ public class MutationPositiveTest {
         LandingPage landingPage = new LandingPage(driver);
         LoginPage loginPage = new LoginPage(driver);
 
-        //Assertion : cek Current URL apakah sudah sesuai dengan URL Landing Page
+        //Assertion
         Assert.assertEquals(landingPage.getCurrentURL(),"https://banksatu.fly.dev/");
 
-        //Assertion : cek apakah Field username, password, dan Button login telah muncul
+        //Assertion
         landingPage.buttonIsDisplayed();
 
         //Element action
         landingPage.clickMasukButton();
 
-        //Assertion : cek current URL apakah sudah berpindah halaman sehingga sesuai dengan URL Home Page
+        //Assertion
         Assert.assertEquals(loginPage.getCurrentURL(),"https://banksatu.fly.dev/login");
 
-        //Assertion : cek Title apakah input form muncul
+        //Assertion
         loginPage.inputFormIsDisplayed();
 
         //Element action
         loginPage.inputEmailField("gilangzhanuardy3222@gmail.com");
         loginPage.inputKataSandiField("Testing123*");
         loginPage.clickMasukButton();
-        Thread.sleep(7000); // Pengecualian dapat terjadi di sini
 
-        //Assertion : cek Current URL apakah sudah sesuai dengan URL Portal Page
+        //Assertion
         Assert.assertEquals(mutationPage.getCurrentURL(),"https://banksatu.fly.dev/portal");
 
         //Element action

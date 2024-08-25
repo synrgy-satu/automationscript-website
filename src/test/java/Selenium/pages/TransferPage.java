@@ -2,6 +2,7 @@ package Selenium.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -25,6 +26,7 @@ public class TransferPage {
     By konfirmasiTransferButton = By.xpath("//*[@aria-label='Konfirmasi dan Transfer']");
     By inputPinButton = By.xpath("//*[@aria-describedby='pin-help']");
     By submitButton = By.xpath("//*[@aria-label='Submit PIN']");
+    By tranferBerhasilText = By.xpath("//*[@class='ml-2 text-2xl font-bold']");
 
     public TransferPage(WebDriver driver) {
         this.driver = driver;
@@ -57,13 +59,13 @@ public class TransferPage {
         driver.findElement(catatanField).sendKeys(catatan);
         driver.findElement(selectWaktuTransfer).click();
         driver.findElement(optionSekarang).click();
-        Thread.sleep(2000);
+        Thread.sleep(500);
         driver.findElement(verifikasiDetailTransferButton).click();
         driver.findElement(konfirmasiTransferButton).click();
         driver.findElement(inputPinButton).sendKeys(inputpin);
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(submitButton));
         driver.findElement(submitButton).click();
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(tranferBerhasilText));
     }
 
 }

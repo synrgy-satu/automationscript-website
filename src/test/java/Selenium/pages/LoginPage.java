@@ -2,6 +2,7 @@ package Selenium.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -14,6 +15,7 @@ public class LoginPage {
     By emailField = By.id("email");
     By kataSandiField = By.id("password");
     By masukButton = By.xpath("(//*[@class='flex justify-center'])[2]");
+    By portalText = By.xpath("(//*[@class='text-xs font-semibold'])[1]");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -39,5 +41,6 @@ public class LoginPage {
 
     public void clickMasukButton(){
         driver.findElement(masukButton).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(portalText));
     }
 }

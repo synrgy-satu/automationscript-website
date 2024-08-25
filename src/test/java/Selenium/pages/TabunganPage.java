@@ -2,6 +2,7 @@ package Selenium.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -28,13 +29,13 @@ public class TabunganPage {
         driver.findElement(tabunganSideBar).click();
     }
 
-    public void saldoAkhirIsDisplayed() throws InterruptedException {
-        Thread.sleep(2000);
+    public void saldoAkhirIsDisplayed(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(saldoAkhir));
         driver.findElement(saldoAkhir).isDisplayed();
     }
 
-    public void informasiTabunganIsDisplayed() throws InterruptedException {
-        Thread.sleep(2000);
+    public void informasiTabunganIsDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(informasiTabungan));
         driver.findElement(informasiTabungan).isDisplayed();
     }
 }

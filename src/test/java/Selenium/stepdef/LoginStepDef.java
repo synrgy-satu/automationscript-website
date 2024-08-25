@@ -24,7 +24,6 @@ public class LoginStepDef {
     @And("user input email with {string}")
     public void userInputEmailWith(String email) throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
-        Thread.sleep(2000);
         loginPage.inputEmailField(email);
     }
 
@@ -38,7 +37,6 @@ public class LoginStepDef {
     public void userClickLoginButton() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickMasukButton();
-        Thread.sleep(7000);
     }
 
     @Then("user is on home page")

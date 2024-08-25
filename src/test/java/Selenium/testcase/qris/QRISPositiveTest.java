@@ -2,7 +2,6 @@ package Selenium.testcase.qris;
 
 import Selenium.pages.LandingPage;
 import Selenium.pages.LoginPage;
-import Selenium.pages.MutationPage;
 import Selenium.pages.QRISPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -22,7 +21,7 @@ public class QRISPositiveTest {
     }
 
     @Test
-    public void qrisTest() throws InterruptedException {
+    public void qrisTest() {
         QRISPage qrisPage = new QRISPage(driver);
         LandingPage landingPage = new LandingPage(driver);
         LoginPage loginPage = new LoginPage(driver);
@@ -46,7 +45,6 @@ public class QRISPositiveTest {
         loginPage.inputEmailField("gilangzhanuardy3222@gmail.com");
         loginPage.inputKataSandiField("Testing123*");
         loginPage.clickMasukButton();
-        Thread.sleep(7000); // Pengecualian dapat terjadi di sini
 
         //Assertion : cek Current URL apakah sudah sesuai dengan URL Portal Page
         Assert.assertEquals(qrisPage.getCurrentURL(),"https://banksatu.fly.dev/portal");

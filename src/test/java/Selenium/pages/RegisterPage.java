@@ -2,6 +2,7 @@ package Selenium.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -50,19 +51,23 @@ public class RegisterPage {
         driver.findElement(tahunMasaAktifField).sendKeys(tahun);
         driver.findElement(checkbox).click();
         driver.findElement(nextButton).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(next2Button));
         driver.findElement(next2Button).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(emailField));
     }
 
     public void inputEmailNomorTeleponField(String email, String nomortelepon){
         driver.findElement(emailField).sendKeys(email);
         driver.findElement(nomorTeleponField).sendKeys(nomortelepon);
         driver.findElement(next3Button).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(kataSandiField));
     }
 
     public void inputKataSandiField(String katasandi, String konfkatasandi){
         driver.findElement(kataSandiField).sendKeys(katasandi);
         driver.findElement(konfKataSandiField).sendKeys(konfkatasandi);
         driver.findElement(next4Button).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(pinField));
     }
 
     public void inputPinField(String pin, String konfpin){

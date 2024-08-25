@@ -21,7 +21,7 @@ public class InfoSaldoPositiveTest {
     }
 
     @Test
-    public void tabunganTest() throws InterruptedException {
+    public void tabunganTest() {
         TabunganPage tabunganPage =  new TabunganPage(driver);
         LandingPage landingPage = new LandingPage(driver);
         LoginPage loginPage = new LoginPage(driver);
@@ -45,7 +45,6 @@ public class InfoSaldoPositiveTest {
         loginPage.inputEmailField("gilangzhanuardy3222@gmail.com");
         loginPage.inputKataSandiField("Testing123*");
         loginPage.clickMasukButton();
-        Thread.sleep(7000); // Pengecualian dapat terjadi di sini
 
         //Assertion : cek Current URL apakah sudah sesuai dengan URL Portal Page
         Assert.assertEquals(tabunganPage.getCurrentURL(),"https://banksatu.fly.dev/portal");
